@@ -1,0 +1,78 @@
+downloads the package lists from the repositories and "updates" them to get information on the newest versions of packages and their dependencies:
+
+sudo apt-get update
+
+downloads and installs the updates for each outdated package and dependency on your system:
+
+sudo apt-get upgrade
+
+cd Desktop
+
+python3.10 -m venv ~/Desktop/airflow_workspace
+
+sudo apt install python3.10-venv
+
+python3.10 -m venv ~/Desktop/airflow_workspace
+
+source ~/Desktop/airflow_workspace/bin/activate
+pip3 install apache-airflow[gcp,sentry,statsd]
+
+pip3 install pyspark
+pip3 install sklearn
+
+cd airflow_workspace
+mkdir airflow
+
+airflow db init
+mkdir dags
+
+Create Users:
+Create user-password to login to Airflow WebUI using below command. You can add multiple users, with varying user privileges if you want multiple people to use it:
+
+airflow users create --username admin --password admin --firstname your_first_name --lastname your_last_name --role Admin --email your_email@some.com
+
+airflow users list
+
+airflow scheduler
+
+for running streamlit app:
+
+cd Desktop
+
+python3.10 -m venv ~/Desktop/streamlit
+
+source ~/Desktop/streamlit/bin/activate
+
+pip install streamlit
+
+streamlit hello
+
+Emial: just press enter
+
+Ctrl+C to stop
+
+cd Desktop
+
+source ~/Desktop/airflow_workspace/bin/activate
+
+pip install apache-airflow[cncf.kubernetes]
+
+streamlit run /home/v/airflow/dags/MLapp-Final.py
+
+
+Start Scheduler:
+
+We have to also start a Airflow scheduler job in a separate terminal that will keep a track of DAG schedules and run them on time:
+
+
+source ~/Desktop/airflow_workspace/bin/activate
+cd airflow
+airflow scheduler
+
+
+Start the server:
+Use below command in a terminal to start the web server. Update the port value as required:
+
+source ~/Desktop/airflow_workspace/bin/activate
+cd airflow
+airflow webserver
